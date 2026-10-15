@@ -1,29 +1,32 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Valliammai's portfolio showcasing Generative AI, LLMs, RAG, ChromaDB, MLOps, machine learning, and data science projects.">
-  <meta name="theme-color" content="#0b1120">
-  <title>Valliammai | AI & GenAI Developer</title>
-
+  <meta name="description" content="Valliammai's AI/ML portfolio featuring Generative AI, LLM, RAG, Machine Learning, Deep Learning, Computer Vision, and MLOps projects.">
+  <title>Valliammai | AI/ML Portfolio</title>
   <style>
     :root {
-      --bg: #0b1120;
-      --surface: #111b2e;
-      --surface-light: #17243a;
-      --text: #e8eef9;
-      --muted: #a6b3c8;
-      --accent: #60a5fa;
-      --accent-light: #93c5fd;
-      --border: #263650;
+      --bg: #08111f;
+      --card: #101d30;
+      --card-light: #15243a;
+      --text: #e8eef8;
+      --muted: #a8b6ca;
+      --blue: #60a5fa;
+      --cyan: #67e8f9;
+      --border: #253650;
     }
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+    }
+
+    html {
       scroll-behavior: smooth;
+      scroll-padding-top: 80px;
     }
 
     body {
@@ -39,7 +42,7 @@
     }
 
     .container {
-      width: min(1100px, 90%);
+      width: min(1120px, 90%);
       margin: auto;
     }
 
@@ -47,57 +50,61 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(11, 17, 32, 0.96);
+      background: rgba(8, 17, 31, 0.96);
       border-bottom: 1px solid var(--border);
       backdrop-filter: blur(12px);
     }
 
     nav {
-      min-height: 72px;
+      min-height: 70px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 20px;
     }
 
     .logo {
-      font-size: 1.35rem;
+      font-size: 1.4rem;
       font-weight: 800;
-      color: var(--accent);
+      color: var(--blue);
     }
 
-    .nav-links {
+    nav ul {
+      list-style: none;
       display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
+      align-items: center;
+      gap: 22px;
     }
 
-    .nav-links a {
-      font-size: 0.94rem;
+    nav ul a {
       color: var(--muted);
+      font-size: 0.94rem;
       transition: color 0.2s;
     }
 
-    .nav-links a:hover {
-      color: var(--accent-light);
+    nav ul a:hover {
+      color: var(--cyan);
+    }
+
+    section {
+      padding: 85px 0;
     }
 
     .hero {
-      min-height: 580px;
+      min-height: 85vh;
       display: flex;
       align-items: center;
-      padding: 90px 0;
       background:
-        radial-gradient(ellipse at 80% 20%, #17345a 0%, transparent 45%),
+        radial-gradient(ellipse at top right, #15365a 0%, transparent 48%),
         var(--bg);
     }
 
     .hero-content {
-      max-width: 800px;
+      max-width: 850px;
     }
 
     .eyebrow {
-      color: var(--accent-light);
+      color: var(--cyan);
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -105,27 +112,26 @@
     }
 
     h1 {
-      font-size: clamp(2.6rem, 7vw, 4.7rem);
+      font-size: clamp(2.5rem, 6vw, 4.7rem);
       line-height: 1.15;
       margin: 18px 0;
-      letter-spacing: -1.5px;
     }
 
     .highlight {
-      color: var(--accent);
+      color: var(--blue);
     }
 
     .hero p {
-      max-width: 680px;
       color: var(--muted);
-      font-size: 1.08rem;
-      margin: 18px 0 28px;
+      font-size: 1.12rem;
+      max-width: 700px;
+      margin-bottom: 28px;
     }
 
-    .buttons {
+    .button-group {
       display: flex;
-      gap: 14px;
       flex-wrap: wrap;
+      gap: 14px;
     }
 
     .btn {
@@ -133,76 +139,106 @@
       padding: 11px 22px;
       border-radius: 8px;
       font-weight: 700;
-      border: 1px solid var(--accent);
-      transition: transform 0.2s, background 0.2s;
+      border: 1px solid var(--blue);
+      transition: 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: #08111f;
+    }
+
+    .btn-secondary {
+      color: var(--blue);
     }
 
     .btn:hover {
       transform: translateY(-2px);
+      opacity: 0.9;
     }
 
-    .btn-primary {
-      background: var(--accent);
-      color: #07111f;
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      margin-bottom: 12px;
     }
 
-    .btn-outline {
-      color: var(--accent-light);
-    }
-
-    section {
-      padding: 78px 0;
-      scroll-margin-top: 75px;
-    }
-
-    .section-heading {
-      margin-bottom: 34px;
-    }
-
-    .section-heading h2 {
-      font-size: clamp(1.8rem, 4vw, 2.4rem);
-      margin-bottom: 8px;
-    }
-
-    .section-heading p {
+    .section-subtitle {
       color: var(--muted);
-      max-width: 700px;
+      margin-bottom: 32px;
+      max-width: 750px;
     }
 
     .about-card,
-    .experience-card,
     .project-card,
-    .contact-card {
-      background: var(--surface);
+    .experience-card {
+      background: var(--card);
       border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 26px;
+      padding: 28px;
     }
 
     .about-card p {
       color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .stat {
+      padding: 20px;
+      background: var(--card-light);
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--cyan);
+      font-size: 1.1rem;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.9rem;
     }
 
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
     }
 
-    .skill {
-      background: var(--surface);
+    .skill-card {
+      padding: 22px;
+      background: var(--card);
       border: 1px solid var(--border);
-      padding: 13px 15px;
-      text-align: center;
-      border-radius: 9px;
-      color: var(--accent-light);
-      font-weight: 600;
-      transition: border-color 0.2s, transform 0.2s;
+      border-radius: 12px;
     }
 
-    .skill:hover {
-      border-color: var(--accent);
-      transform: translateY(-3px);
+    .skill-card h3 {
+      color: var(--cyan);
+      margin-bottom: 14px;
+    }
+
+    .tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 14px;
+    }
+
+    .tech-list span {
+      background: #1b304b;
+      color: #d5e7ff;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      border: 1px solid #2b4666;
     }
 
     .projects-grid {
@@ -214,114 +250,94 @@
     .project-card {
       display: flex;
       flex-direction: column;
-      height: 100%;
+      align-items: flex-start;
       transition: transform 0.2s, border-color 0.2s;
     }
 
     .project-card:hover {
       transform: translateY(-4px);
-      border-color: var(--accent);
+      border-color: var(--blue);
     }
 
     .project-number {
-      color: var(--accent);
-      font-weight: 800;
-      font-size: 0.85rem;
-      margin-bottom: 10px;
+      color: var(--cyan);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
     }
 
     .project-card h3 {
       font-size: 1.25rem;
-      margin-bottom: 12px;
+      line-height: 1.4;
+      margin-bottom: 14px;
     }
 
     .project-card p {
       color: var(--muted);
       font-size: 0.95rem;
-      margin-bottom: 14px;
     }
 
     .project-card h4 {
-      font-size: 0.9rem;
-      margin-bottom: 8px;
-      color: var(--accent-light);
-    }
-
-    .tech-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 22px;
-    }
-
-    .tech-list span {
-      background: var(--surface-light);
-      color: #c6d7ef;
-      padding: 4px 9px;
-      border-radius: 5px;
-      font-size: 0.8rem;
+      margin-top: 20px;
+      font-size: 0.95rem;
     }
 
     .project-links {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
       margin-top: auto;
-      padding-top: 8px;
+      padding-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
     }
 
     .project-links a {
-      color: var(--accent-light);
+      color: var(--blue);
       font-weight: 700;
-      font-size: 0.92rem;
     }
 
     .project-links a:hover {
-      text-decoration: underline;
+      color: var(--cyan);
     }
 
     .experience-card h3 {
-      font-size: 1.25rem;
-      margin-bottom: 5px;
+      font-size: 1.3rem;
     }
 
     .experience-meta {
-      color: var(--accent-light);
-      font-size: 0.92rem;
-      margin-bottom: 15px;
-    }
-
-    .experience-card p,
-    .experience-card li {
-      color: var(--muted);
+      color: var(--cyan);
+      margin: 5px 0 18px;
+      font-size: 0.95rem;
     }
 
     .experience-card ul {
       padding-left: 22px;
-      margin-top: 12px;
+      color: var(--muted);
+    }
+
+    .experience-card li {
+      margin-bottom: 12px;
     }
 
     .contact-card {
       text-align: center;
-      padding: 42px 24px;
+      padding: 40px 25px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
     }
 
     .contact-card p {
-      color: var(--muted);
-      max-width: 620px;
+      max-width: 650px;
       margin: 12px auto 25px;
+      color: var(--muted);
     }
 
     .contact-links {
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .contact-links a {
-      color: var(--accent-light);
-      font-weight: 700;
+      justify-content: center;
+      gap: 14px;
     }
 
     footer {
@@ -332,177 +348,249 @@
       font-size: 0.9rem;
     }
 
-    @media (max-width: 760px) {
+    @media (max-width: 800px) {
       nav {
-        padding: 16px 0;
+        padding: 15px 0;
         align-items: flex-start;
         flex-direction: column;
       }
 
-      .nav-links {
+      nav ul {
+        flex-wrap: wrap;
         gap: 12px 18px;
       }
 
       .hero {
         min-height: auto;
-        padding: 75px 0;
+        padding: 100px 0;
       }
 
       .projects-grid {
         grid-template-columns: 1fr;
       }
+    }
 
+    @media (max-width: 520px) {
       section {
-        padding: 58px 0;
+        padding: 60px 0;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .about-card,
+      .project-card,
+      .experience-card {
+        padding: 21px;
+      }
+
+      nav ul a {
+        font-size: 0.85rem;
       }
     }
   </style>
 </head>
-
 <body>
+
   <header>
     <nav class="container">
       <a class="logo" href="#home">Valliammai.</a>
-
-      <div class="nav-links">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#contact">Contact</a>
-      </div>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Internship</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </nav>
   </header>
 
   <main>
     <section class="hero" id="home">
-      <div class="container">
-        <div class="hero-content">
-          <span class="eyebrow">AI • GenAI • LLMs • RAG • MLOps</span>
-
-          <h1>
-            Hi, I'm <span class="highlight">Valliammai</span>
-          </h1>
-
-          <h2>AI & GenAI Developer</h2>
-
-          <p>
-            Computer Science graduate with AI/ML internship experience,
-            building practical applications using Generative AI, large
-            language models, Retrieval-Augmented Generation, machine
-            learning, and model monitoring. I enjoy turning ideas into
-            useful, real-world solutions.
-          </p>
-
-          <div class="buttons">
-            <a class="btn btn-primary" href="#projects">Explore Projects</a>
-            <a class="btn btn-outline" href="#contact">Contact Me</a>
-            <a class="btn btn-outline"
-               href="https://github.com/valli0796"
-               target="_blank"
-               rel="noopener noreferrer">GitHub Profile</a>
-          </div>
+      <div class="container hero-content">
+        <div class="eyebrow">AI/ML Engineer | Generative AI Enthusiast</div>
+        <h1>
+          Hi, I'm Valliammai.<br>
+          I build <span class="highlight">AI-powered solutions.</span>
+        </h1>
+        <p>
+          A Computer Science graduate interested in Artificial Intelligence,
+          Machine Learning, Generative AI, LLMs, RAG, Deep Learning, and
+          Computer Vision. I enjoy building practical applications that
+          solve real-world problems.
+        </p>
+        <div class="button-group">
+          <a class="btn btn-primary" href="#projects">Explore My Projects</a>
+          <a class="btn btn-secondary" href="#contact">Contact Me</a>
         </div>
       </div>
     </section>
 
     <section id="about">
       <div class="container">
-        <div class="section-heading">
-          <h2>About Me</h2>
-          <p>A little about my background and interests.</p>
-        </div>
-
+        <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle">
+          My background, interests, and technical journey.
+        </p>
         <div class="about-card">
           <p>
-            I am a Computer Science graduate interested in Artificial
-            Intelligence, Generative AI, NLP, LLM applications,
-            Retrieval-Augmented Generation, and MLOps. During my AI/ML
-            internship, I worked on practical projects involving interview
-            preparation and machine learning model monitoring.
+            I am a Computer Science graduate with a CGPA of 7.86 and
+            hands-on internship experience in Artificial Intelligence
+            and Machine Learning.
           </p>
-          <br>
           <p>
-            My project experience includes document-based question answering,
-            semantic similarity, data analysis, model drift detection,
-            performance monitoring, and interactive application development.
-            I am interested in opportunities to learn, collaborate, and build
-            reliable AI-powered products.
+            My technical interests include Generative AI, Large Language
+            Models, Retrieval-Augmented Generation (RAG), NLP, Machine
+            Learning, Neural Networks, Deep Learning, Computer Vision,
+            and MLOps.
           </p>
+          <p>
+            Through project development, I have explored AI-powered interview
+            preparation, project document analysis, model drift monitoring,
+            and retail demand forecasting. I am continuously improving my
+            skills and looking for opportunities to contribute to practical
+            AI and software solutions.
+          </p>
+          <div class="stats">
+            <div class="stat">
+              <strong>AI/ML</strong>
+              <span>Internship Experience</span>
+            </div>
+            <div class="stat">
+              <strong>Generative AI</strong>
+              <span>Area of Interest</span>
+            </div>
+            <div class="stat">
+              <strong>Project-Based</strong>
+              <span>Practical Learning</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <section id="skills">
       <div class="container">
-        <div class="section-heading">
-          <h2>Technical Skills</h2>
-          <p>Technologies and tools used across my projects.</p>
-        </div>
-
+        <h2 class="section-title">Technical Skills</h2>
+        <p class="section-subtitle">
+          Technologies and concepts I have learned or explored through
+          coursework, internship experience, and projects.
+        </p>
         <div class="skills-grid">
-          <div class="skill">Python</div>
-          <div class="skill">Generative AI</div>
-          <div class="skill">LLMs</div>
-          <div class="skill">LLaMA</div>
-          <div class="skill">RAG</div>
-          <div class="skill">Prompt Engineering</div>
-          <div class="skill">LangChain</div>
-          <div class="skill">ChromaDB</div>
-          <div class="skill">NLP</div>
-          <div class="skill">Machine Learning</div>
-          <div class="skill">MLOps</div>
-          <div class="skill">Sentence Transformers</div>
-          <div class="skill">Gemini API</div>
-          <div class="skill">FastAPI</div>
-          <div class="skill">Streamlit</div>
-          <div class="skill">SQL</div>
-          <div class="skill">PostgreSQL</div>
-          <div class="skill">Supabase</div>
-          <div class="skill">Pandas & NumPy</div>
-          <div class="skill">Scikit-learn</div>
-          <div class="skill">Plotly</div>
-          <div class="skill">Docker</div>
-          <div class="skill">Git & GitHub</div>
+          <div class="skill-card">
+            <h3>Programming & Data</h3>
+            <div class="tech-list">
+              <span>Python</span>
+              <span>SQL</span>
+              <span>Pandas</span>
+              <span>NumPy</span>
+              <span>PostgreSQL</span>
+              <span>Supabase</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <h3>Generative AI & LLMs</h3>
+            <div class="tech-list">
+              <span>Generative AI</span>
+              <span>LLMs</span>
+              <span>RAG</span>
+              <span>Prompt Engineering</span>
+              <span>LangChain</span>
+              <span>Gemini API</span>
+              <span>LLaMA</span>
+              <span>ChromaDB</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <h3>AI & Machine Learning</h3>
+            <div class="tech-list">
+              <span>Machine Learning</span>
+              <span>NLP</span>
+              <span>Neural Networks</span>
+              <span>Deep Learning</span>
+              <span>Computer Vision</span>
+              <span>Scikit-learn</span>
+              <span>spaCy</span>
+              <span>Sentence Transformers</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <h3>Backend & Applications</h3>
+            <div class="tech-list">
+              <span>FastAPI</span>
+              <span>Streamlit</span>
+              <span>REST APIs</span>
+              <span>Plotly</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <h3>MLOps & Tools</h3>
+            <div class="tech-list">
+              <span>MLOps</span>
+              <span>Docker</span>
+              <span>Git</span>
+              <span>GitHub</span>
+              <span>Model Monitoring</span>
+              <span>Data Drift Detection</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <h3>Analytics & Forecasting</h3>
+            <div class="tech-list">
+              <span>Exploratory Data Analysis</span>
+              <span>Feature Engineering</span>
+              <span>Statsmodels</span>
+              <span>Time Series Forecasting</span>
+              <span>Data Visualization</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <section id="projects">
       <div class="container">
-        <div class="section-heading">
-          <h2>Featured Projects</h2>
-          <p>
-            Projects focused on AI applications, machine learning,
-            monitoring, and data-driven problem solving.
-          </p>
-        </div>
+        <h2 class="section-title">My Projects</h2>
+        <p class="section-subtitle">
+          AI, Generative AI, MLOps, and data-driven applications.
+        </p>
 
         <div class="projects-grid">
+
           <article class="project-card">
             <div class="project-number">PROJECT 01</div>
             <h3>VivaIQ – Project Intelligence & Viva System</h3>
             <p>
               An AI-powered application that analyzes uploaded project
-              documents, extracts relevant information, generates
-              project-specific viva questions, and provides feedback
-              on user answers using LLM and RAG techniques.
+              documents, extracts important information, generates
+              project-specific viva questions, and provides feedback on
+              user answers. Designed to help students understand and
+              prepare to explain their own projects.
             </p>
             <h4>Tech Stack</h4>
             <div class="tech-list">
               <span>Python</span>
               <span>RAG</span>
+              <span>LLMs</span>
               <span>LangChain</span>
               <span>Gemini API</span>
               <span>ChromaDB</span>
+              <span>Sentence Transformers</span>
               <span>FastAPI</span>
               <span>Streamlit</span>
             </div>
             <div class="project-links">
               <a href="https://github.com/valli0796/project_intelligence_viva"
-                 target="_blank"
-                 rel="noopener noreferrer">View on GitHub ↗</a>
+                 target="_blank" rel="noopener noreferrer">
+                View on GitHub ↗
+              </a>
             </div>
           </article>
 
@@ -510,9 +598,11 @@
             <div class="project-number">PROJECT 02</div>
             <h3>PrepPilot – AI Interview Preparation System</h3>
             <p>
-              An interview practice application for technical and HR
-              interviews. It evaluates answers using keyword coverage,
-              semantic similarity, completeness, and AI-generated feedback.
+              Developed an AI-based interview preparation application
+              that supports interview practice, answer evaluation,
+              feedback, and interview history. Combines NLP techniques,
+              semantic similarity, and Generative AI to help users
+              improve their interview responses.
             </p>
             <h4>Tech Stack</h4>
             <div class="tech-list">
@@ -526,38 +616,48 @@
             </div>
             <div class="project-links">
               <a href="https://github.com/valli0796/preppilot-interview-coach"
-                 target="_blank"
-                 rel="noopener noreferrer">View on GitHub ↗</a>
+                 target="_blank" rel="noopener noreferrer">
+                View on GitHub ↗
+              </a>
               <a href="https://preppilot-interview-coach-h2qqxzj4eh7r9jbkhatrnr.streamlit.app/"
-                 target="_blank"
-                 rel="noopener noreferrer">Live Demo ↗</a>
+                 target="_blank" rel="noopener noreferrer">
+                Live Demo ↗
+              </a>
             </div>
           </article>
 
           <article class="project-card">
             <div class="project-number">PROJECT 03</div>
-            <h3>ML Model Drift Monitoring System</h3>
+            <h3>ML Model Drift Monitoring & Automated Retraining System</h3>
             <p>
-              A monitoring system that tracks production data drift and
-              model performance, calculates model health indicators,
-              identifies potential issues, and recommends retraining
-              when configured performance thresholds are not met.
+              Developed an MLOps system to monitor machine learning models
+              in production by detecting data drift, tracking model
+              performance, calculating model health scores, and
+              recommending retraining when configured performance
+              thresholds are not met. Integrated API endpoints, a
+              monitoring dashboard, database history, and Docker
+              containerization to support the model monitoring lifecycle.
             </p>
             <h4>Tech Stack</h4>
             <div class="tech-list">
               <span>Python</span>
-              <span>Scikit-learn</span>
+              <span>Machine Learning</span>
               <span>MLOps</span>
+              <span>Scikit-learn</span>
               <span>FastAPI</span>
               <span>Streamlit</span>
               <span>Docker</span>
               <span>PostgreSQL</span>
+              <span>Data Drift Detection</span>
+              <span>Model Monitoring</span>
               <span>Plotly</span>
+              <span>Git & GitHub</span>
             </div>
             <div class="project-links">
               <a href="https://github.com/valli0796/ml-model-drift-monitoring"
-                 target="_blank"
-                 rel="noopener noreferrer">View on GitHub ↗</a>
+                 target="_blank" rel="noopener noreferrer">
+                View on GitHub ↗
+              </a>
             </div>
           </article>
 
@@ -565,9 +665,11 @@
             <div class="project-number">PROJECT 04</div>
             <h3>Retail Demand Forecasting & Inventory Optimization</h3>
             <p>
-              A data science project focused on analyzing historical retail
-              sales, exploring demand patterns, forecasting future sales,
-              and supporting inventory planning with data-driven insights.
+              A retail analytics project focused on analyzing historical
+              sales data, forecasting future product demand, and supporting
+              inventory planning. Uses data analysis, time series methods,
+              and machine learning techniques to explore demand patterns
+              and help reduce overstocking and stockouts.
             </p>
             <h4>Tech Stack</h4>
             <div class="tech-list">
@@ -579,79 +681,101 @@
               <span>Statsmodels</span>
               <span>Scikit-learn</span>
               <span>Streamlit</span>
+              <span>Plotly</span>
             </div>
             <div class="project-links">
               <a href="https://github.com/valli0796"
-                 target="_blank"
-                 rel="noopener noreferrer">Explore GitHub Profile ↗</a>
+                 target="_blank" rel="noopener noreferrer">
+                View GitHub Profile ↗
+              </a>
             </div>
           </article>
+
         </div>
       </div>
     </section>
 
     <section id="experience">
       <div class="container">
-        <div class="section-heading">
-          <h2>Internship Experience</h2>
-          <p>Practical experience developing AI and machine learning projects.</p>
-        </div>
+        <h2 class="section-title">Internship Experience</h2>
+        <p class="section-subtitle">
+          Practical exposure to AI, Machine Learning, and related technologies.
+        </p>
 
         <div class="experience-card">
           <h3>AI/ML Intern</h3>
           <div class="experience-meta">
             Technologies India Private Limited | May 2026 – August 2026
           </div>
-
-          <p>
-            Worked on AI and machine learning project development,
-            applying programming, NLP, model evaluation, and application
-            development skills.
-          </p>
-
           <ul>
             <li>
-              Developed an AI-based interview preparation application
-              with answer evaluation and personalized feedback.
+              Gained hands-on experience with Artificial Intelligence
+              and Machine Learning concepts, techniques, and practical
+              applications.
             </li>
             <li>
-              Built a machine learning model monitoring system to track
-              data drift, performance metrics, and model health.
+              Explored Neural Networks and Deep Learning concepts,
+              including model architectures and learning processes.
             </li>
             <li>
-              Applied Python, machine learning libraries, databases,
-              and interactive application frameworks.
+              Gained practical exposure to Computer Vision techniques
+              and image-based AI applications.
+            </li>
+            <li>
+              Developed AI/ML projects involving Natural Language
+              Processing, Generative AI, and machine learning model
+              monitoring.
+            </li>
+            <li>
+              Worked with model evaluation, performance analysis,
+              and AI-based problem-solving approaches.
+            </li>
+            <li>
+              Strengthened practical knowledge of Python and AI/ML
+              tools through project development and experimentation.
             </li>
           </ul>
+          <h4>Technologies & Concepts</h4>
+          <div class="tech-list">
+            <span>Python</span>
+            <span>Machine Learning</span>
+            <span>Neural Networks</span>
+            <span>Deep Learning</span>
+            <span>Computer Vision</span>
+            <span>NLP</span>
+            <span>Generative AI</span>
+            <span>LLMs</span>
+            <span>MLOps</span>
+          </div>
         </div>
       </div>
     </section>
 
     <section id="contact">
       <div class="container">
+        <h2 class="section-title">Get In Touch</h2>
         <div class="contact-card">
-          <div class="section-heading">
-            <h2>Let's Connect</h2>
-          </div>
-
+          <h3>Let's Connect</h3>
           <p>
-            Interested in AI, Generative AI, LLM applications, RAG,
-            MLOps, and data-driven solutions? Feel free to contact me
-            about opportunities, collaborations, or freelance projects.
+            I am interested in AI/ML opportunities, Generative AI,
+            LLM and RAG projects, and opportunities to keep learning
+            and building useful applications.
           </p>
-
           <div class="contact-links">
-            <!-- Replace with your actual email address. -->
-            <a href="mailto:YOUR_EMAIL@example.com">Email Me</a>
-
-            <a href="https://github.com/valli0796"
-               target="_blank"
-               rel="noopener noreferrer">GitHub</a>
-
-            <!-- Replace with your personal LinkedIn profile URL. -->
-            <a href="https://www.linkedin.com/"
-               target="_blank"
-               rel="noopener noreferrer">LinkedIn</a>
+            <a class="btn btn-primary"
+               href="mailto:YOUR_EMAIL@example.com">
+              Email Me
+            </a>
+            <a class="btn btn-secondary"
+               href="https://www.linkedin.com/"
+               target="_blank" rel="noopener noreferrer">
+              LinkedIn
+            </a>
+            <a class="btn btn-secondary"
+               href="https://github.com/valli0796"
+               target="_blank" rel="noopener noreferrer">
+              GitHub
+            </a>
           </div>
         </div>
       </div>
@@ -664,5 +788,6 @@
       <p>Prepare. Practice. Succeed.</p>
     </div>
   </footer>
+
 </body>
 </html>
